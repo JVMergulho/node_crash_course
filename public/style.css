@@ -62,6 +62,10 @@
     }
 
     /* index styles */
+    .blogs{
+      margin-top: 50px;
+    }
+
     .blogs a{
       display: block;
       margin: 40px 0;
@@ -70,6 +74,25 @@
     }
     .blogs a:hover h3{
       color: rgb(27, 109, 190);
+    }
+
+    #search{
+      background-color:rgb(246, 250, 254);
+      border:solid 2px rgb(27, 109, 190);
+      border-radius:10px;
+      width:300px;
+      height:32px;
+    }
+    
+    #txt_search{
+      float:left;
+      background-color:transparent;
+      padding-left:5px;
+      font-size:16px;
+      border-radius:10px;
+      border:none;
+      height:32px;
+      width:295px;
     }
 
     /* details styles */

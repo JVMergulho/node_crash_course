@@ -7,6 +7,7 @@ const blogController = require('../controllers/blogController')
 // Controler: use Models to get data and pass it to Views
 
 router.get('/blogs', blogController.blog_index)
+router.get('/blogs/search', blogController.blog_index)
 router.post('/blogs', blogController.blog_create_post)
 
 // '/blogs/create' tem que vir antes de '/blogs/:id'

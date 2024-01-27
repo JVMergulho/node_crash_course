@@ -2,13 +2,28 @@
 const Blog = require('../models/blog')
 
 const blog_index = (req, res) => {
-    Blog.find()
-        .then((result) => {
-            res.render('blogs/index', {title: "All Blogs", blogs: result})
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+
+    const searchTerm = req.query.searchTerm
+
+    if (searchTerm) {
+        // Se searchTerm existe, faça uma busca filtrada no banco de dados
+        Blog.find({ title: new RegExp(searchTerm, 'i') })
+            .then((result) => {
+                res.render('blogs/index', { title: "Search Results", blogs: result});
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    } else {
+        Blog.find()
+            .sort({createdAt: -1})
+            .then((result) => {
+                res.render('blogs/index', {title: "All Blogs", blogs: result})
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 }
 
 const blog_create_get = (req,res) => {
