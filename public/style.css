@@ -13,6 +13,10 @@
       color: #222;
     }
 
+    .site-title{
+      color: rgb(27, 109, 190);
+    }
+
     /* nav & footer styles */
     nav{
       display: flex;
@@ -30,6 +34,9 @@
     nav li{
       list-style-type: none;
       margin-left: 20px;
+    }
+    nav a:hover li{
+      color: rgb(55, 55, 196);
     }
     nav h1{
       font-size: 3em;
@@ -55,8 +62,31 @@
     }
 
     /* index styles */
+    .blogs a{
+      display: block;
+      margin: 40px 0;
+      padding-left: 30px;
+      border-left: 6px solid  rgb(27, 109, 190);
+    }
+    .blogs a:hover h3{
+      color: rgb(27, 109, 190);
+    }
 
     /* details styles */
+    .details{
+      position: relative;
+    }
+    .delete{
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 50%;
+      padding: 8px;
+    }
+    .delete:hover{
+      cursor: pointer;
+      box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+    }
 
     /* create styles */
     .create-blog form{
@@ -86,3 +116,9 @@
       font-size: 1.2em;
       cursor: pointer;
     }
+
+    /* About styles */
+    .about a {
+      color: #3498db; /* Cor padrão do link */
+      text-decoration: none; /* Remover sublinhado padrão */
+  }

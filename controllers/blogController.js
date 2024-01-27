@@ -33,6 +33,9 @@ const blog_details = (req, res) => {
             .then(result => {
                 res.render('blogs/details', {title: 'Blog Details', blog: result})
             })
+            .catch(err => {
+                res.status(404).render('notFound', {title: '404' })
+            })
 }
 
 const blog_delete = (req,res) => {
