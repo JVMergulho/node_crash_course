@@ -24,6 +24,7 @@ app.set('view engine', 'ejs')
 // middleware & static files
 app.use(express.static('public'))
 
+// decode to url into an object
 app.use(express.urlencoded())
 
 // printa um log com informações sobre o request 
@@ -67,11 +68,42 @@ app.get('/blogs', (req, res) => {
 })
 
 app.post('/blogs', (req,res) => {
+    const blog = new Blog(req.body)
 
+    blog.save()
+        .then((result) => {
+            console.log("Blog added")
+            res.redirect('/blogs')
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 })
 
 app.get('/blogs/create', (req, res) => {
+    console.log('Redirect to create')
     res.render('create',{title: 'New Blog' })
+})
+
+app.get('/blogs/:id', (req, res) => {
+    const id = req.params.id
+
+    Blog.findById(id)
+        .then(result => {
+            res.render('details', {title: 'Blog Details', blog: result})
+        })
+})
+
+app.delete('/blogs/:id', (req, res) => {
+    const id = req.params.id
+
+    Blog.findByIdAndDelete(id)
+        .then(result => {
+            res.json({ redirect: '/blogs'})
+        })
+        .catch(err => {
+            console.log(err)
+        })
 })
 
 // 404 page
